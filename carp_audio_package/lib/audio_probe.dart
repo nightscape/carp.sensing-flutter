@@ -77,15 +77,14 @@ class AudioProbe extends BufferingPeriodicProbe {
 
   Future<String> _stopAudioRecording() async {
     return new Future.sync(() {
-      try {
-        String result = await _flutterSound.stopRecorder();
+      _flutterSound.stopRecorder().then((result) {
         _endRecordingTime = DateTime.now();
         _isRecording = false;
         return result;
-      } catch (err) {
+      }, (err) {
         controller.addError(err);
         throw err;
-      }
+      });
     });
   }
 
