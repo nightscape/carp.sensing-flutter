@@ -81,7 +81,7 @@ class AudioProbe extends BufferingPeriodicProbe {
         _endRecordingTime = DateTime.now();
         _isRecording = false;
         return result;
-      }, (err) {
+      }, onError: (err) {
         controller.addError(err);
         throw err;
       });
