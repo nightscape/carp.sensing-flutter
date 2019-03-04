@@ -83,7 +83,7 @@ class AudioProbe extends BufferingPeriodicProbe {
         return result;
       }, onError: (err) {
         controller.addError(err);
-        throw err;
+        return null;
       });
     });
   }
